@@ -14,6 +14,35 @@
 
 <body>
 
+        <div>
+            <label><input type="radio" name="age" id="under65" value="0"> Under 65 years old</label>
+            <label><input type="radio" name="age" id="over65to74" value="1"> 65 to 74 years old</label>
+            <label><input type="radio" name="age" id="over74" value="2"> 75 or older</label>
+        </div>
+        <div>
+            <label><input type="radio" name="sex" id="male"> male</label>
+            <label><input type="radio" name="sex" id="female"> female</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="chf"> Congestive Heart Failure history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="hypertension"> Hypertension history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="stroke"> Stroke/TIA/thromboembolism history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="vasc"> Vascular disease history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="diabetes"> Diabetes history</label>
+        </div>
+        <input type="button" onclick="generatePatientProfile()" value="Submit">
+    </form>
+
+    <p id="score">Press submit to see risk score</p>
+    <hr>
     <label>Enter a value between 1 and 100</label>
     <input type="range" id="strokerisk", min="1", max="100">
 
