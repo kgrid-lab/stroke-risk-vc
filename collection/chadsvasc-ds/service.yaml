@@ -18,21 +18,21 @@ tags:
   - name: KO Endpoints
     description: Hello World Endpoints
 paths:
-  /welcome:
-    post:
+  /dsfunctions:
+    get:
       parameters:
-        - $ref: '#/components/parameters/apiversion'
+        - in: query
+          name: v
+          schema:
+            type: string
+            default:
+              $ref: '#/info/version'
+          required: true
+          description: the api version of the endpoint
       tags:
         - KO Endpoints
       description: Welcome.
-      operationId: welcome
-      requestBody:
-        description: inputs
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/user'
+      operationId: welcome-list
       responses:
         '200':
           description: response

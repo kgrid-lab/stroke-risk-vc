@@ -1,0 +1,14 @@
+{
+  "@id" : "chadsvasc/ds/v1.0",
+  "@type" : "koio:KnowledgeObject",
+  "title" : "Chads-vasc decision support",
+  "identifier" : "ark:/chadsvasc/ds/v1.0",
+  "version" : "v1.0",
+  "description" : "An object demonstrating several ways to deliver decision support tools to a front-end client",
+  "contributors" : "Kgrid Team Developer",
+  "keywords" : [ "Chads-vasc", "decision-support", "demo" ],
+  "hasServiceSpecification" : "service.yaml",
+  "hasDeploymentSpecification" : "deployment.yaml",
+  "hasPayload" : "src/ds.js",
+  "@context" : [ "http://kgrid.org/koio/contexts/knowledgeobject.jsonld" ]
+}

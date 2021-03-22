@@ -1,0 +1,6 @@
+/dsfunctions:
+  get:
+    artifact:
+      - src/ds.js
+    engine: resource
+    entry: src/ds.js
