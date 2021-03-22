@@ -5,7 +5,7 @@ let patient = {
     diabetes: false,
     hypertension: false,
     stroke: false,
-    vasc: false,
+    vasc: false
 }
 let score = 0;
 

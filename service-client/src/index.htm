@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Chads Vasc Stroke Risk</title>
+    <meta name="description" content="Chads vasc stroke risk">
+    <meta name="author" content="KGrid">
+
+    <script defer src="risk-slider.js" type="text/javascript"></script>
+    <!-- Needs to point to a running activator with the chadsvasc-ds object -->
+    <script defer src="http://localhost:8083/chadsvasc/ds/dsfunctions/src/ds.js?v=1.0" type="text/javascript"></script>
+</head>
+
+<body>
+<div>
+    <label><input type="radio" name="age" id="under65" value="0"> Under 65 years old</label>
+    <label><input type="radio" name="age" id="over65to74" value="1"> 65 to 74 years old</label>
+    <label><input type="radio" name="age" id="over74" value="2"> 75 or older</label>
+</div>
+<div>
+    <label><input type="radio" name="sex" id="male"> male</label>
+    <label><input type="radio" name="sex" id="female"> female</label>
+</div>
+<div>
+    <label><input type="checkbox" id="chf"> Congestive Heart Failure history</label>
+</div>
+<div>
+    <label><input type="checkbox" id="hypertension"> Hypertension history</label>
+</div>
+<div>
+    <label><input type="checkbox" id="stroke"> Stroke/TIA/thromboembolism history</label>
+</div>
+<div>
+    <label><input type="checkbox" id="vasc"> Vascular disease history</label>
+</div>
+<div>
+    <label><input type="checkbox" id="diabetes"> Diabetes history</label>
+</div>
+<input type="button" onclick="generatePatientProfile()" value="Submit">
+
+<p id="score">Press submit to see risk score</p>
+<hr>
+<span>Stop strokes</span>
+<input type="range" id="strokerisk" min="1" max="100">
+<span>Stop bleeding</span>
+
+<p id="output" style="margin-bottom: 0; position: relative; left: 50px; font-family:sans-serif">&nbsp;|<br>V</p>
+<div style="margin-top: 0; width: 500px; height: 25px; background: linear-gradient(90deg, blue, red); font: 12pt sans-serif; color: #ffffff"><span>Greater Bleeding Risk</span><span style="float: right;">Greater Stroke Risk</span></div>
+
+</body>
+</html>

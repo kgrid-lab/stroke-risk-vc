@@ -45,3 +45,7 @@ function getRiskConstant(score) {
 function getStrokeRiskFunction() {
   return (preference, score) => preference * getRiskCoefficient(score) + parseInt(getRiskConstant(score), 10);
 }
+
+function calculateRisk(patientInfo) {
+  return getStrokeRiskFunction()(patientInfo.preference, patientInfo.score);
+}

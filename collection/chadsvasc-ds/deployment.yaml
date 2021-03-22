@@ -4,3 +4,17 @@
       - src/ds.js
     engine: resource
     entry: src/ds.js
+/getScore:
+  post:
+    artifact:
+      - src/ds.js
+    engine: javascript
+    entry: src/ds.js
+    function: generateScore
+/getRisk:
+  post:
+    artifact:
+      - src/ds.js
+    engine: javascript
+    entry: src/ds.js
+    function: calculateRisk
