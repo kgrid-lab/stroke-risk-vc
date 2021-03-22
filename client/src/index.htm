@@ -43,10 +43,12 @@
 
     <p id="score">Press submit to see risk score</p>
     <hr>
-    <label>Enter a value between 1 and 100</label>
+    <span>Stop strokes</span>
     <input type="range" id="strokerisk", min="1", max="100">
+    <span>Stop bleeding</span>
 
-    <p id="output"></p>
+    <p id="output" style="margin-bottom: 0; position: relative; left: 50px; font-family:sans-serif">&nbsp;|<br>V</p>
+    <div style="margin-top: 0; width: 500px; height: 25px; background: linear-gradient(90deg, blue, red); font: 12pt sans-serif; color: #ffffff"><span>Greater Bleeding Risk</span><span style="float: right;">Greater Stroke Risk</span></div>
 
 </body>
 </html>

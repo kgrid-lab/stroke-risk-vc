@@ -12,8 +12,7 @@ let score = 0;
 document.getElementById("strokerisk").addEventListener("change",
     () => {
         let risk = getStrokeRiskFunction()(document.getElementById("strokerisk").value, score);
-        document.getElementById("output").innerHTML =
-            "Selected stroke risk is " + risk;
+        document.getElementById("output").style.left = 2*risk + 'px';
     });
 
 function generatePatientProfile() {
