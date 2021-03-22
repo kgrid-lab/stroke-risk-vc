@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
-  /getScore:
+  /score:
     post:
       parameters:
         - $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/parameters/apiversion'
@@ -74,7 +74,7 @@ paths:
             application/json:
               schema:
                 $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
-  /getRisk:
+  /risk:
     post:
       parameters:
         - $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/parameters/apiversion'

@@ -16,7 +16,7 @@ document.getElementById("strokerisk").addEventListener("change",
         let patientPref = document.getElementById("strokerisk").value;
         let risk = 50;
         let req = new XMLHttpRequest();
-        let riskFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/getRisk";
+        let riskFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/risk";
         req.open("POST", riskFuncUrl);
         req.setRequestHeader("Content-Type", "application/json");
         req.onload = () => {
@@ -45,7 +45,7 @@ function generatePatientProfile() {
     patient.vasc = document.querySelector("#vasc").checked;
 
     let req = new XMLHttpRequest();
-    let scoreFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/getScore";
+    let scoreFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/score";
     req.open("POST", scoreFuncUrl);
     req.setRequestHeader("Content-Type", "application/json");
     req.onload = () => {
