@@ -4,6 +4,12 @@
       - src/ds.js
     engine: resource
     entry: src/ds.js
+/vc-slider:
+  get:
+    artifact:
+      - src/vc-slider.js
+    engine: resource
+    entry: src/vc-slider.js
 /score:
   post:
     artifact:

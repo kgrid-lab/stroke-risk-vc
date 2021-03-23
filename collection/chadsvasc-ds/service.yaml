@@ -46,6 +46,34 @@ paths:
             application/json:
               schema:
                 $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
+  /vc-slider:
+    get:
+      parameters:
+        - in: query
+          name: v
+          schema:
+            type: string
+            default:
+              $ref: '#/info/version'
+          required: true
+          description: the api version of the endpoint
+      tags:
+        - KO Endpoints
+      description: Welcome.
+      operationId: welcome-list
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericresponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
   /score:
     post:
       parameters:

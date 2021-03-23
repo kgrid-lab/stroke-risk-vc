@@ -25,6 +25,7 @@ class VcSlider extends HTMLElement {
 
         const gradient = document.createElement('div');
         gradient.setAttribute('class', 'vc-gradient');
+
         const leftResult = document.createElement('span')
         leftResult.setAttribute('class', 'vc-leftResult');
         leftResult.textContent = this.getAttribute('leftresult') || 'Greater Bleeding Risk';
