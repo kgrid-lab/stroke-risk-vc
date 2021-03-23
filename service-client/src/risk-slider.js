@@ -9,7 +9,7 @@ let patient = {
 }
 let score = 0;
 
-// Frontend data transfer code
+// Frontend code
 
 document.getElementById("strokerisk").addEventListener("change",
     () => {

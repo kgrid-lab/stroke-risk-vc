@@ -9,13 +9,7 @@ let patient = {
 }
 let score = 0;
 
-// Frontend data transfer code
-
-document.getElementById("strokerisk").addEventListener("change",
-    () => {
-        let risk = getStrokeRiskFunction()(document.getElementById("strokerisk").value, score);
-        document.getElementById("output").style.left = 2*risk + 'px';
-    });
+// Frontend code
 
 function generatePatientProfile() {
 
