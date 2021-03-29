@@ -1,3 +1,4 @@
+# Resource endpoints that supply the javascript as code that can run in a browser
 /dsfunctions:
   get:
     artifact:
@@ -10,6 +11,8 @@
       - src/vc-slider.js
     engine: resource
     entry: src/vc-slider.js
+
+# Service endpoints that take JSON input in a POST request and return a JSON result
 /score:
   post:
     artifact:

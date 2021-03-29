@@ -30,14 +30,14 @@ function calculateStrokeRisk() {
     // Communicate with the object's code running in the knowledge grid to get the patient's risk score
     // and determine if they fall outside the bounds of needed values clarification
     let req = new XMLHttpRequest();
-    let scoreFuncUrl = "http://localhost:8083/chadsvasc/ds/1.0/score";
+    let scoreFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/score";
     req.open("POST", scoreFuncUrl);
     req.setRequestHeader("Content-Type", "application/json");
     req.onload = () => {
         score = JSON.parse(req.responseText).result;
         document.getElementById("score").innerText = "Your risk score is " + score;
         let req2 = new XMLHttpRequest();
-        let needsVCUrl = "http://localhost:8083/chadsvasc/ds/1.0/needsAc";
+        let needsVCUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/needsAc";
         req2.open("POST", needsVCUrl);
         req2.setRequestHeader("Content-Type", "application/json");
         req2.onload = () => {
@@ -67,7 +67,7 @@ document.getElementById("strokerisk").addEventListener("change",
         let patientPref = document.getElementById("strokerisk").value;
         let risk = 50;
         let req = new XMLHttpRequest();
-        let riskFuncUrl = "http://localhost:8083/chadsvasc/ds/1.0/risk";
+        let riskFuncUrl = "https://activator-playground.herokuapp.com/chadsvasc/ds/1.0/risk";
         req.open("POST", riskFuncUrl);
         req.setRequestHeader("Content-Type", "application/json");
         req.onload = () => {

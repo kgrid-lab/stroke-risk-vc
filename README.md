@@ -8,3 +8,9 @@ The different approaches these clients take is most apparent in how the value of
 While we can show this dual way of executing a simple function we cannot do the same with the widget provided in the `vc-slider.js` file as it must be used in a browser that supports javascript extending HTMLElements, allowing us to define the look and behavior of a new html element that we can then use like any other html element like `<p>` or `<br>`. This file must be provided using the resource engine and used like a standard html javascript import.
 
 More detailed information about each client is provided on their respective pages.Feel free to play with each and edit their code.
+
+You can [try the three clients here](https://kgrid-lab.github.io/stroke-risk-vc/service-client/) on github.
+
+## Notes
+- We're only using the one risk score algorithm, this can be swapped out with a different risk score by replacing the `getRiskFunction()` function.
+- The javascript files can be downloaded from the activator and served from where-ever is convenient for the user to serve them from.
