@@ -1,4 +1,6 @@
 class VcSlider extends HTMLElement {
+    static get observedAttributes() { return ['score']; }
+
     constructor() {
         super();
 
@@ -34,12 +36,22 @@ class VcSlider extends HTMLElement {
         rightResult.setAttribute('class', 'vc-rightResult');
         rightResult.textContent = this.getAttribute('rightresult') || 'Greater Stroke Risk';
 
+        const belowLowerBound = document.createElement('span');
+        belowLowerBound.setAttribute('class','recommend-none');
+        belowLowerBound.textContent = this.getAttribute('belowlowerbound') || 'The patient\'s risk does not indicate a need for anti-coagulant.';
+
+        const aboveUpperBound = document.createElement('span');
+        aboveUpperBound.setAttribute('class', 'recommend-always');
+        aboveUpperBound.textContent = this.getAttribute('aboveupperbound') || 'The patient\'s risk indicates a need for anti-coagulant.';
+
         const style = document.createElement('style');
         let leftColor = this.getAttribute('leftcolor') || 'blue';
         let rightColor = this.getAttribute('rightcolor') ||'red';
 
         style.textContent = `
         .vc-wrapper {
+            text-align:center;
+            font-size: 12pt;
             position: relative;
             border: 2px solid grey;
             padding: 10px;
@@ -71,11 +83,25 @@ class VcSlider extends HTMLElement {
             float: right;
             margin: 0.2em;
         }
+        
+        .recommend-none {
+            border: 2px solid grey;
+            padding: 10px;
+            width: 500px;
+            display: none;
+        }
+        
+        .recommend-always {
+            border: 2px solid grey;
+            padding: 10px;
+            width: 500px;
+            display: none;
+        }
         `;
 
         slider.addEventListener("change",
             () => {
-                let risk = getStrokeRiskFunction()(slider.value, score);
+                let risk = getRiskFunction()(slider.value, score);
                 outputArrow.style.left = 2*risk - 7 + 'px';
             });
 
@@ -87,8 +113,34 @@ class VcSlider extends HTMLElement {
         wrapper.appendChild(outputArrow);
         wrapper.appendChild(gradient);
         gradient.appendChild(leftResult);
-        gradient.appendChild(rightResult);
-  }
+        gradient.appendChild(rightResult)
+        shadow.appendChild(belowLowerBound);
+        shadow.appendChild(aboveUpperBound);
+    }
+
+    score = this.getAttribute('score');
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if(name === 'score') {
+            let vcElem = this.shadowRoot.querySelector(".vc-wrapper");
+            let recNone = this.shadowRoot.querySelector(".recommend-none");
+            let recAll = this.shadowRoot.querySelector(".recommend-always");
+            if (needsAc(newValue) === "NO") {
+                vcElem.style.display = "none";
+                recNone.style.display = "block";
+                recAll.style.display = "none";
+            } else if (needsAc(newValue) === "YES") {
+                vcElem.style.display = "none";
+                recNone.style.display = "none";
+                recAll.style.display = "block";
+            } else {
+                vcElem.style.display = "block";
+                recNone.style.display = "none";
+                recAll.style.display = "none";
+            }
+            score = newValue;
+        }
+    }
 
 }
 customElements.define('vc-slider', VcSlider);

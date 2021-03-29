@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Chads Vasc Stroke Risk</title>
+    <meta name="description" content="Chads vasc stroke risk">
+    <meta name="author" content="KGrid">
+
+    <link href="../style.css" rel="stylesheet">
+    <script defer src="risk-slider.js" type="text/javascript"></script>
+    <!-- note we do not import any javascript files from the activator -->
+</head>
+
+<body>
+    <!-- Example client code for using patient details to generate an initial stroke risk score-->
+    <div style="width: 45%;">
+        <div>
+            <label><input type="radio" name="age" id="under65" checked> Under 65 years old</label>
+            <label><input type="radio" name="age" id="over65to74"> 65 to 74 years old</label>
+            <label><input type="radio" name="age" id="over74"> 75 or older</label>
+        </div>
+        <div>
+            <label><input type="radio" name="sex" id="male"> male</label>
+            <label><input type="radio" name="sex" id="female" checked> female</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="chf"> Congestive Heart Failure history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="hypertension"> Hypertension history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="stroke"> Stroke/TIA/thromboembolism history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="vasc"> Vascular disease history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="diabetes"> Diabetes history</label>
+        </div>
+        <input type="button" onclick="calculateStrokeRisk()" value="Submit Patient">
+    </div>
+
+    <p id="score">Press submit to see risk score</p>
+    <hr>
+    <!-- a custom slider -->
+    <div id="vc-slider" style="border: 2px solid grey; width: 518px; padding: 0.5em; text-align: center">
+        <span>Stop strokes</span>
+        <input type="range" id="strokerisk" min="1" max="100">
+        <span>Stop bleeding</span>
+
+        <p id="output" style="margin-bottom: 0; position: relative; left: 50px; font: 20pt sans-serif; text-align: left">🠗</p>
+        <div style="margin-top: 0; width: 500px; height: 25px; background: linear-gradient(90deg, blue, red); font: 12pt sans-serif; color: white; padding: 0.3em 0.4em 0">
+            <span style="float: left">Greater Bleeding Risk</span><span style="float: right;">Greater Stroke Risk</span></div>
+    </div>
+    <p id="recommend-none" style="display:none">The patient's risk does not indicate a need for anti-coagulant.</p>
+    <p id="recommend-always" style="display:none">The patient's risk indicates a need for anti-coagulant.</p>
+
+    <!-- Explanation of this client-->
+    <input type="button" onclick="showInfo()" value="Hide Info" id="info-button">
+    <div class="info slidein">
+        <div><a href="../resource-custom-client/index.htm">Custom Resource Client</a> | <a href="../resource-widget-client/index.htm">Widget Resource Client</a></div>
+        <h3>Service Client</h3>
+        <p>
+            This client uses javascript to communicate with code running in the KGrid javascript engine on a remote server
+            and uses the results to drive a custom local widget. This allows the client to utilize code stored in the KGrid
+            that has been tested and is backed by research while using a more customized interface.
+        </p>
+        <p>
+            For this client the local javascript code in <span class="code">risk-slider.js</span> communicates with the
+            javascript endpoints provided by the knowledge object, passing them inputs like the stroke risk score and the
+            slider position and receives the output which is the result of the linear equation.
+        </p>
+        <p>
+            The knowledge object has three endpoints <span class="code">chadsvasc/ds/1.0/risk</span>,
+            <span class="code">chadsvasc/ds/1.0/score</span>, and <span class="code">chadsvasc/ds/1.0/needsAc</span> which
+            will generate the final risk of stroke or bleeding using the slider's position, generate the initial stroke
+            risk and determine if the patient falls outside the bounds of using values clarification and needs or doesn't
+            need anti-coagulants, respectively.
+        </p>
+        <p>
+            The outputs from these functions can then be used to drive the front-end presentation of the site such as showing the
+            arrow move on the slider or displaying the out of bounds text.
+        </p>
+    </div>
+</body>
+</html>

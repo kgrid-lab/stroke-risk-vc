@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+
+    <title>Chads Vasc Stroke Risk</title>
+    <meta name="description" content="Chads vasc stroke risk">
+    <meta name="author" content="KGrid">
+    <script defer src="risk-slider.js" type="text/javascript"></script>
+
+    <!-- Needs to point to a running activator with the chadsvasc-ds object -->
+    <script defer src="http://localhost:8083/chadsvasc/ds/dsfunctions/src/decision-support.js?v=1.0" type="text/javascript"></script>
+    <script defer src="http://localhost:8083/chadsvasc/ds/vc-slider/src/vc-slider.js?v=1.0" type="text/javascript"></script>
+    <link href="../style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Example client code for using patient details to generate an initial stroke risk score -->
+    <div style="width: 45%;">
+        <div>
+            <label><input type="radio" name="age" id="under65" checked> Under 65 years old</label>
+            <label><input type="radio" name="age" id="over65to74"> 65 to 74 years old</label>
+            <label><input type="radio" name="age" id="over74"> 75 or older</label>
+        </div>
+        <div>
+            <label><input type="radio" name="sex" id="male"> male</label>
+            <label><input type="radio" name="sex" id="female" checked> female</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="chf"> Congestive Heart Failure history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="hypertension"> Hypertension history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="stroke"> Stroke/TIA/thromboembolism history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="vasc"> Vascular disease history</label>
+        </div>
+        <div>
+            <label><input type="checkbox" id="diabetes"> Diabetes history</label>
+        </div>
+        <input type="button" onclick="generatePatientProfile()" value="Submit Patient">
+    </div>
+    <p id="score">Press submit to see risk score</p>
+    <hr>
+    <!-- Two examples of using the slider widget provided in vc-slider.js-->
+    Default slider widget:
+    <vc-slider id="vc-slider2" score="0"></vc-slider>
+    <br>
+    Customized slider widget:
+    <vc-slider id="vc-slider" score="0" leftoption="Less strokes plz" rightoption="I don't want to bleed as much"
+               rightcolor="orange" leftcolor="red" leftresult="Looking good, maybe some bleeding"
+               rightresult="Higher stroke risk over here" aboveupperbound="Please give this patient anti-coagulant."
+               belowlowerbound="Do not give this patient anti-coagulant."></vc-slider>
+
+    <!-- Explanation of this client-->
+    <input type="button" onclick="showInfo()" value="Hide Info" id="info-button">
+    <div class="info slidein">
+        <div><a href="../resource-custom-client/index.htm">Custom Resource Client</a> | <a href="../service-client/index.htm">Service Client</a></div>
+        <h3>Widget Resource Client</h3>
+        <p>
+            This client uses standard html to pull in javascript resources and can then call functions defined in those
+            javascript files directly from local code. For example the patient survey submit button calls
+            <span class="code">generateScore(patient)</span> to use the generateScore function defined in decision-support.js
+        </p>
+        <p>
+            Custom widgets can also be loaded using this method. The vc-slider.js file defines an HTML tag called
+            <span class="code">&lt;vc-slider&gt;</span> that can be used to render the entire slider input and output shown below.
+            This slider has one required attribute called <span class="code">score</span> which is used to determine the
+            lower bound, upper bound and scaling of the algorithm used in converting the patient's preference into a risk
+            value displayed on the lower gradient. There are also attributes that change the text of the  slider options,
+            the gradient labels and the gradient colors.
+        </p>
+        <p>
+            The slider widget uses a function called <span class="code">getRiskFunction()</span> which returns a function
+            that is used to calculate the output risk given the position of the slider and the initial risk score passed
+            into the widget. A sample implementation is provided in decision-support.js but a user can supply their
+            own implementation to translate the slider input into the final bleeding vs stroke risk.
+        </p>
+        <p>
+            The widget also uses a <span class="code">needsAc(score)</span> function which returns either <span class="code">"YES"</span>,
+            <span class="code">"MAYBE"</span> or <span class="code">"NO"</span>. In the <span class="code">"YES"</span>
+            and <span class="code">"NO"</span> cases the appropriate message is displayed, otherwise the values
+            clarification slider is shown. Like the <span class="code">getRiskFunction()</span> function this is provided
+            in decision-support.js but can also be swapped out with another function that returns the three values
+            mentioned above.
+        </p>
+    </div>
+</body>
+</html>

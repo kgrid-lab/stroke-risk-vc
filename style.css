@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font: 14pt 'Roboto', sans-serif;
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+.code {
+    color:#001300;
+    font:10pt monospace;
+    background:#cccccc;
+}
+
+#info-button {
+    position: absolute;
+    left: 40%;
+    top: 1em;
+}
+
+.info {
+    position:absolute;
+    top:1em;
+    right:-60%;
+    width:50%;
+    padding:0 1ex;
+    border:1px solid green;
+    line-height: 1.3em;
+    background: #d2ffd9;
+}
+
+.info.slidein {
+    transition: 1s;
+    right: 2em !important;
+}
+
+.info.slideout {
+    transition: 1s;
+    right: -60% !important;
+}

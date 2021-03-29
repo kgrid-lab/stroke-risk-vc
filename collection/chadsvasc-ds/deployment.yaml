@@ -1,9 +1,9 @@
 /dsfunctions:
   get:
     artifact:
-      - src/ds.js
+      - src/decision-support.js
     engine: resource
-    entry: src/ds.js
+    entry: src/decision-support.js
 /vc-slider:
   get:
     artifact:
@@ -13,14 +13,21 @@
 /score:
   post:
     artifact:
-      - src/ds.js
+      - src/decision-support.js
     engine: javascript
-    entry: src/ds.js
+    entry: src/decision-support.js
     function: generateScore
 /risk:
   post:
     artifact:
-      - src/ds.js
+      - src/decision-support.js
     engine: javascript
-    entry: src/ds.js
+    entry: src/decision-support.js
     function: calculateRisk
+/needsAc:
+  post:
+    artifact:
+      - src/decision-support.js
+    engine: javascript
+    entry: src/decision-support.js
+    function: needsAc
