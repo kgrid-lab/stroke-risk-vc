@@ -1,5 +1,5 @@
 # Stroke Risk Values Clarification Demo Object and Client
-A sample knowledge object and client demo that shows off how javascript code can be used as a resource loaded into a html page or used as REST endpoints that can be used to calculate specific values.
+A sample knowledge object (in the collection directory) and client demo that shows off how javascript code can be used as a resource loaded into a html page or used as REST endpoints that can be used to calculate specific values.
 
 There are three separate clients that each use the same knowledge object in different ways. The included knowledge object has just two files `decision-support.js` and `vc-slider.js` but the `deployment.yaml` file allows them to be accessed as either resources or as REST endpoints that can be given inputs and return outputs using the javascript engine. The two resource clients use HTML to import the javascript files so they can be called by the HTML code and other local javascript files while the service client uses local javascript to make REST calls to the endpoints exposed by the object and get results back.
 
@@ -9,7 +9,7 @@ While we can show this dual way of executing a simple function we cannot do the 
 
 More detailed information about each client is provided on their respective pages.Feel free to play with each and edit their code.
 
-You can [try the three clients here](https://kgrid-lab.github.io/stroke-risk-vc/service-client/) on github.
+You can [try the three clients here](https://kgrid-lab.github.io/stroke-risk-vc/service-client/) on github or download them and open any of the index.htm files in a browser.
 
 ## Notes
 - We're only using the one risk score algorithm, this can be swapped out with a different risk score by replacing the `getRiskFunction()` function.
